@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'game_board.dart';
+import 'snake.dart';
+import 'food.dart';
+import 'game_controller.dart';
 
-void main() {
-  runApp(SnakeGame());
-}
-
-class SnakeGame extends StatelessWidget {
+abstract class SnakeGame with StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Snake Game',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Snake Game'),
       ),
-      home: GameBoard(),
+      body: SnakeGameUI(),
     );
-  }
 }
