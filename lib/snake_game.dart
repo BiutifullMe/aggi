@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'snake.dart';
-import 'food.dart';
+import 'package:flutter/services.dart';
+import 'game_board.dart';
 import 'game_controller.dart';
 
-abstract class SnakeGame with StatelessWidget {
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(SnakeGame());
+  });
+}
+
+class SnakeGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Snake Game'),
+    return MaterialApp(
+      title: 'Snake Game',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      body: SnakeGameUI(),
+      home: GameBoard(),
     );
+  }
 }
